@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Cards</title>
+    <style>
+        .question-card {
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        input {
+            display: block;
+            margin-top: 6px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h2>Questions</h2>
+
+<div id = "questionContainer"></div>
+
+<script>
+    let qCounter = 0;
+
+    function createQuestionCard(text){
+        qCounter++;
+
+        const div = document.createElement("div");
+        div.className = "question-card";
+        div.innerHTML = `
+        <strong>Question ${qCounter}</strong>
+        <input type = "text" value="${text}">
+        `;
+        return div;
+    }
+
+    const container = document.getElementById("questionContainer");
+    container.appendChild(createQuestionCard("What is javascript"));
+    container.appendChild(createQuestionCard("What is HTML?"));
+    
+</script>
+    
+</body>
+</html>

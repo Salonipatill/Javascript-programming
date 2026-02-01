@@ -1,0 +1,46 @@
+<!DODTYPE html>
+<html lang ="en">
+<head>
+    <style>
+       .question {
+            margin: 8px 0;
+            padding: 6px;
+            border: 1px solid #ccc;
+        } 
+    </style>
+</head>
+<body>
+    <h2>Questions</h2>
+
+    <div id = "questionContainer"></div>
+
+    <button id = "addQuestionBtn">Add Question</button>
+
+    <script>
+        let qCounter = 0;
+
+        function createQuestionCard() {
+            qCounter++;
+
+            const div = document.createElement("div");
+            div.className = "question" ;
+            div.innerHTML = "Question" + qCounter;
+
+            return div;
+        }
+
+
+        const container = document.getElementById("questionContainer");
+
+        //add wo questions by default 
+        container.appendChild(createQuestionCard());
+        container.appendChild(createQuestionCard());
+
+        //Add on button click
+        document.getElementById("addQuestionBtn").addEventListener("click", () =>{ container.appendChild(createQuestionCard());
+
+    });
+    </script>
+
+</body>
+</html>

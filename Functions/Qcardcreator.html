@@ -1,0 +1,57 @@
+//A regular function is a named function created using the function keyword.
+//It is used to group reusable code that runs when the function is called.
+//className-> Standard JS DOM property
+//Purpose->Holds the class attribute of the element
+//We use ${} to insert variables or expressions into a string easily and cleanly.
+//This is called string interpolation.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quiz Question Example</title>
+        <style>
+          .question-card {
+      border: 1px solid #2b4baa;
+      padding: 10px;
+      margin: 10px 0;
+      background: #f9f9f9;
+    }
+        </style>
+    </head>
+    <body>
+
+        <h2>Create Quiz Questions</h2>
+        <div id = "questionContainer"></div>
+        <button id = "addQuestionBtn">Add Question</button>
+
+        <script>
+            let qCounter = 0;//variable1
+
+            function createQuestionCard(prefill){ //function
+
+                qCounter += 1;// variable1 used here
+                const qDiv = document.createElement('div');
+                qDiv.className = 'question-card';// assign className
+                const questionText = prefill ? prefill.text : '';//variable2 and here use  .text to write text
+                qDiv.innerHTML = `<strong>Question ${qCounter}:</strong>                     
+                  <input type= "text" placeholder = "Enter question" value = "${questionText}"/>
+                  `; // automatic numbering
+                  return qDiv;
+                
+                  
+            }
+
+            const container = document.getElementById('questionContainer');//variable
+            document.getElementById('addQuestionBtn').addEventListener( 'click', () => {
+                const card = createQuestionCard();// put function here
+                container.appendChild(card);// add function whenever call
+            });
+
+            const firstCard = createQuestionCard({text: "What is JavaScript?"});// already written text  in text field of question
+            container.appendChild(firstCard);  // added this in questionContainer 
+
+
+        </script>
+
+    </body>
+</html>

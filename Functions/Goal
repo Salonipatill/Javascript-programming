@@ -1,0 +1,146 @@
+Step 1: Decide what we want
+We want:
+A page to create quiz questions
+Each question:
+Has a number (Question 1, 2, 3…)
+Has an input box
+A button to add more questions dynamically
+
+
+So we need:
+HTML → structure
+CSS → optional styling
+JavaScript → logic & interaction
+
+
+Step 2: Create the static HTML structure
+ visible part:
+<h2>Create Quiz Questions</h2>
+<div id="questionContainer"></div>
+<button id="addQuestionBtn">AddQuestion</button>
+
+Why h2 , div  and button :-
+
+h2 → heading
+div → empty container where questions will be inserted
+button → user interaction
+
+Step 3: Track how many questions exist
+
+We need automatic numbering, so we create a counter:
+
+let qCounter = 0;
+
+
+Step 4: Create a reusable function
+function createQuestionCard(prefill) { ... }
+
+Why
+
+We need to create question cards:
+
+On page load
+On button click
+One function = reusable logic
+
+
+Step 5: Build the question card inside the function
+
+Increase counter
+qCounter++;        So each card gets a new number.
+
+
+create a div (question card)
+
+const qDiv = document.createElement('div');
+
+This creates:
+<div></div>
+
+Add a CSS class
+
+qDiv.className = 'question-card';
+So CSS can style it later.
+
+Decide input value
+
+const questionText = prefill ? prefill.text : '';
+
+If data is provided → use it
+Otherwise → empty input
+
+
+qDiv.innerHTML = `
+  <strong>Question ${qCounter}:</strong>
+  <input type="text" value="${questionText}">
+`;
+
+
+This:
+Adds dynamic question number
+Creates an input field
+
+
+Return the element
+return qDiv;
+So we can insert it into the page.
+
+
+
+
+PART 2: Flow of EXECUTION (what the browser does)
+tep 1: Browser loads HTML
+Shows heading
+Shows button
+Container is empty
+
+Step 2: Browser reaches <script>
+JavaScript starts running top to bottom.
+
+Step 3: Function is defined
+
+function createQuestionCard(prefill) { ... }
+
+
+Step 4: Container is selected
+
+const container = document.getElementById('questionContainer');
+
+Now JS knows where to add questions.
+
+
+Step 5: Event listener is attached
+addEventListener('click', () => {...});
+
+This means:
+“When the button is clicked, run this code.”
+
+Step 6: First question is created automatically
+
+const firstCard = createQuestionCard({ text: "What is Javascript?" });
+
+So Question 1 appears immediately.
+
+Step 7: User clicks the button 
+each click:
+1. Calls createQuestionCard()
+2. increments counter 
+3. Creates a new card
+4. Appends it to the container
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
