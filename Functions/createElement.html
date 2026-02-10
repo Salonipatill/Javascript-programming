@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Options</h2>
+    <div id = "optionContainer"></div>
+    <button id ="addBtn">Add Option</button>
+     
+    <script>
+        const op = document.getElementById("optionContainer")
+        const bt = document.getElementById("addBtn")
+
+        function createOptionRow(){
+            const row = document.createElement('div')
+            row.className = 'option-row'
+
+            const input = document.createElement('input')
+            input.type = 'text'
+            input.placeholder = 'option-text'
+        
+            const checkbox = document.createElement('input')
+            checkbox.type = 'checkbox'
+
+            const label = document.createElement('label')
+            label.textContent = 'Correct'
+            label.prepend(checkbox)
+
+            row.appendChild(input)
+            row.appendChild(label)
+            
+            return row;
+        }
+
+        bt.addEventListener('click', ()=>{
+            const optionrow = createOptionRow()
+            op.appendChild(optionrow)
+        });
+    </script>
+</body>
+</html>
