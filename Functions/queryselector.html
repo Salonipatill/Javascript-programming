@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = "t">HELLO</h1>
+    <button class = "btn">Click me</button>
+    <script>
+        const ti = document.querySelector('#t');
+        const btn = document.querySelector('.btn');
+
+        btn.addEventListener("click",()=>{
+            ti.textContent ="Clicked the button!"
+        });
+    </script>
+</body>
+</html>
