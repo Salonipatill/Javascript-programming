@@ -1,0 +1,54 @@
+DOM API:
+The DOM API (Document Object Model API) is a collection of:
+Objects
+Methods
+Properties
+Event handling mechanisms
+
+
+Methods:-
+document.getElementById()
+document.querySelector()
+document.querySelectorAll()
+document.getElementsByClassName()
+document.createElement()
+element.appendChild()
+element.addEventListener()
+
+Properties:-
+element.textContent
+element.innerHTML
+element.className
+element.id
+element.style
+element.value
+
+Objects:-
+document
+window
+element
+
+Event Handling Mechanisms in DOM API:
+
+Clicking
+Typing
+Submitting a form
+Moving the mouse
+Pressing a key
+
+They allow the page to become interactive.
+
+3 Ways to Handle Events
+Inline HTML Event
+Using DOM Property
+Using addEventListener()
+
+
+Common Events
+
+"click"
+"mouseover"
+"mouseout"
+"keydown"
+"submit"
+"input"
