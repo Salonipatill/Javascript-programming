@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial;
+            padding : 30px;
+            background: #f4f4f4;
+        }
+        .app{
+            background : white;
+            padding : 20px;
+            width : 320px;
+            border-radius : 10;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+        li{
+            margin :8px 0;
+            display: flex;
+            justify-content:space-between;
+        }
+        button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        const app = document.createElement("div");
+        app.className = "app";
+
+        const title = document.createElement("h2");
+        title.textContent = "Todo List";
+
+        const input = document.createElement("input");
+        input.placeholder = "Enter task....";
+        input.style.marginRight = "8px";
+
+        const addBtn = document.createElement("button");
+        addBtn.textContent = "Add";
+
+        const list = document.createElement("ul");
+
+
+        addBtn.onclick = function(){
+            if(input.value.trim()==="")
+            return;
+
+            const li = document.createElement("li");
+
+            const span = document.createElement("span");
+            span.textContent = input.value;
+            
+            const del = document.createElement("button");
+            del.textContent = "Delete";
+
+            del.onclick = function(){
+              li.remove();
+
+            };
+
+            li.appendChild(span);
+            li.appendChild(del);
+            list.appendChild(li);
+
+            input.value= "";
+
+        };
+
+        app.appendChild(title);
+        app.appendChild(input);
+        app.appendChild(addBtn);
+        app.appendChild(list);
+
+        document.getElementById("root").appendChild(app);
+
+    </script>
+    
+</body>
+</html>
