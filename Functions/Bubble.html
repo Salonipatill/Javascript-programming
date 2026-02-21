@@ -9,10 +9,10 @@
 
 <script>
 document.addEventListener("click", function(e){
-
+// createElement DOM API
 const bubble = document.createElement("div");
 
-bubble.style.position = "absolute";
+bubble.style.position = "absolute";//style DOM API
 bubble.style.left = e.pageX - 10 + "px";
 bubble.style.top = e.pageY - 10 + "px";
 bubble.style.width = "20px";
@@ -20,12 +20,12 @@ bubble.style.height = "20px";
 bubble.style.borderRadius = "50%";
 
 bubble.style.background = 
-     `hsl(${Math.random()*360},80%, 60%)`;
+     `hsl(${Math.random()*360},80%, 60%)`;//hsl css property
      
-bubble.style.pointerEvents = "none";
-bubble.style.transition = "all 0.8s ease-out";
+bubble.style.pointerEvents = "none";//
+bubble.style.transition = "all 0.8s ease-out";//
 
-document.body.appendChild(bubble);
+document.body.appendChild(bubble);//appendChild DOM API
 
 requestAnnimationFrame(() =>{
     bubble.style.transform = "scale(6)";
