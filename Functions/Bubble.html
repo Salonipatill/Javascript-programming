@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Bubbles</title>
+</head>
+<body style ="height:100vh; margin:0; cursor:pointer;">
+
+<script>
+document.addEventListener("click", function(e){
+
+const bubble = document.createElement("div");
+
+bubble.style.position = "absolute";
+bubble.style.left = e.pageX - 10 + "px";
+bubble.style.top = e.pageY - 10 + "px";
+bubble.style.width = "20px";
+bubble.style.height = "20px";
+bubble.style.borderRadius = "50%";
+
+bubble.style.background = 
+     `hsl(${Math.random()*360},80%, 60%)`;
+     
+bubble.style.pointerEvents = "none";
+bubble.style.transition = "all 0.8s ease-out";
+
+document.body.appendChild(bubble);
+
+requestAnnimationFrame(() =>{
+    bubble.style.transform = "scale(6)";
+    bubble.style.opacity = "0";
+
+});
+
+setTimeout(()=> bubble.remove(), 800);
+});
+</script>
+    
+</body>
+</html>
