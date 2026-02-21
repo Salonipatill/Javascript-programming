@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background: #222;
+}
+canvas{
+    background: black;
+}
+</style>
+</head>
+<body>
+
+<canvas id="game" width="400" height = "400"></canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+const grid = 20;
+let snake = [{x:160, y:160}];
+let dx = grid;
+let dy = 0;
+
+let food = {
+    x: Math.floor(Math.random()*20)*grid,
+    y: Math.floor(Math.random()*20)*grid
+};
+
+document.addEventListener("keydown", e=>{
+    if(e.key==="ArrowLeft" && dx===0){dx=-grid; dy=0;}
+    if(e.key==="ArrowUp" && dy===0){dx=0; dy=-grid;}
+    if(e.key==="ArrowRight" && dx===0){dx=grid; dy=0;}
+    if(e.key==="ArrowDown" && dy===0){dx=0; dy=grid;}
+});
+
+function loop(){
+    requestAnimationFrame(loop);
+
+    if(++loop.count<8)return;
+    loop.count = 0;
+
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+
+    let head= {x: snake[0].x + dx, y: snake[0].y + dy};
+
+    if(head.x <0) head.x = canvas.width-grid;
+    if(head.x>= canvas.width)head.x=0;
+    if(head.y < 0) head.y = canvas.height-grid;
+    if(head.y >= canvas.height) head.y = 0;
+snake.unshift(head);
+
+if(head.x === food.x && head.y === food.y){
+food.x = Math.floor(Math.random()*20)*grid;
+food.y = Math.floor(Math.random()*20)*grid;
+} else {
+     snake.pop();
+  }
+
+
+ ctx.fillStyle="lime";
+  snake.forEach(s=>{
+    ctx.fillRect(s.x, s.y, grid-1, grid-1);
+  });
+
+  // draw food
+  ctx.fillStyle="red";
+  ctx.fillRect(food.x, food.y, grid-1, grid-1);
+
+}
+loop();
+
+
+
+</script>
+</body>
+</html>
